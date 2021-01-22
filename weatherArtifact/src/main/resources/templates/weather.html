@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<script type="text/javascript">
+		function show(){
+			document.getElementById('testForm').submit();
+		}
+</script>
+<form id="testForm" action="/weather"  method="get" >
+<select name="cityName"  class="form-control input1" th:onchange="'javascript:show();'">
+    <option th:selected="${city}"
+            th:each="city : ${cities}"
+            th:value="${city}" 
+            th:text="${city}"> 
+    </option> 
+</select>
+</form>
+<div id="msg" >
+	<p th:text="'City:' + ${weatherInfo.city} + '!'" />
+	<p th:text="'UpdatedTime: ' + ${weatherInfo.updatedTime} + '!'" />
+	<p th:text="'Weather: ' + ${weatherInfo.weather} + '!'" />
+	<p th:text="'Temperature: ' + ${weatherInfo.temperature} + '!'" />
+	<p th:text="'Wind: ' + ${weatherInfo.wind} + '!'" />
+	</div>
+</body>
+
+</html>
